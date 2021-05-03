@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">MY UTM CONVERTOR</string>
+    <string name="title_activity_convert">MY UTM CONVERTOR</string>
+    <string name="title_home">خانه</string>
+    <string name="share">ارسال برنامه</string>
+    <string name="aboutus">درباره من</string>
+    <string name="map">بر اساس نقشه</string>
+    <string name="click_on_share_image_to_share_the_app_n">Click On Share Image to Share The App \n برای به اشتراک گذاری بری روی عکس کلیک کنید</string>
+    <string name="todo">TODO</string>
+    <string name="toast">سس</string>
+
+    <string name="gps">روشن کردن GPS</string>
+
+    <string name="gps_gps">آیا میخواهید GPS دستگاه را روشن کنید؟ برای پیدا کردن مکاه فعلی شما نیاز به دسترسی به GPS داریم</string>
+
+    <string name="degree_y">degree y</string>
+    <string name="degree_x">degree x</string>
+    <string name="utm_e">UTM E</string>
+    <string name="utm_n">UTM N</string>
+    <string name="copy_utm">copy utm</string>
+    <string name="copy_degree">copy degree</string>
+    <string name="email_salahshms_gmail_com">Email Address : SALAHSHMS@GMAIL.COM</string>
+    <string name="website_salahshams_ir">WEBSITE = SALAHSHAMS.IR</string>
+    <string name="gps11">برنامه برای پیدا کردن محل فعلی شما نیاز به دسترسی به GPS دارد</string>
+    <string name="agree">موافقم</string>
+    <string name="disagree">مخالفم</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+    <string-array name="convertunits">
+        <item>PLEASE SELECT CONVERSION UNITS</item>
+        <item>Lat&amp;Long TO MGR UTM</item>
+        <item>Degree To Radian</item>
+        <item>MGR UTM To Lat&amp;Long</item>
+        <item>Lat&amp;Long TO UTM</item>
+        <item>Radian To Degree</item>
+        <item>UTM To Lat&amp;Long</item>
+    </string-array>
+</resources>

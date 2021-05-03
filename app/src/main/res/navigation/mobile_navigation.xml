@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="salahsh.shams.app.ui.homeFrag"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home2" />
+
+    <fragment
+        android:id="@+id/map"
+        android:name="salahsh.shams.app.ui.Map"
+        android:label="@string/map"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/aboutus"
+        android:name="salahsh.shams.app.ui.AaboutUs"
+        android:label="@string/aboutus"
+        tools:layout="@layout/fragment_aabout_us" />
+    <fragment
+        android:id="@+id/share"
+        android:name="salahsh.shams.app.ui.share"
+        android:label="@string/share"
+        tools:layout="@layout/fragment_share" />
+  </navigation>
