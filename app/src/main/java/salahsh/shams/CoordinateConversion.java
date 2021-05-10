@@ -95,8 +95,8 @@ public class CoordinateConversion
       double _easting = getEasting();
       double _northing = getNorthing(latitude);
 
-      UTM = longZone + " " + latZone + " " + ((int) _easting) + " "
-          + ((int) _northing);
+      UTM = longZone + " " + latZone + " " + ( _easting) + " "
+          + ( _northing);
       // UTM = longZone + " " + latZone + " " + decimalFormat.format(_easting) +
       // " "+ decimalFormat.format(_northing);
 
@@ -289,7 +289,7 @@ public class CoordinateConversion
       }
       northing = northing.substring(northing.length() - 5);
 
-      mgrUTM = longZone + latZone + digraph1 + digraph2 + easting + northing;
+      mgrUTM = longZone + latZone +" "+ digraph1 + digraph2 +" "+ easting +" "+ northing;
       return mgrUTM;
     }
   }

@@ -24,6 +24,10 @@
     <string name="gps11">برنامه برای پیدا کردن محل فعلی شما نیاز به دسترسی به GPS دارد</string>
     <string name="agree">موافقم</string>
     <string name="disagree">مخالفم</string>
+    <string name="copy_result">copy result</string>
+    <string name="calculate">calculate</string>
+    <string name="enter_latitude">Enter Latitude</string>
+    <string name="enter_longitude">Enter Longitude</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 

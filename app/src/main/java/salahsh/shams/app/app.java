@@ -1,5 +1,6 @@
 package salahsh.shams.app;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,8 @@ public class app {
         public static final String TAG = "UTMCONVERTOR";
 
 
-
     }
+
     public static void Ctoast(String message) {
         TextView cutomtoasttxt;
         View view = LayoutInflater.from(application.getContext()).inflate(R.layout.cusotm_toast, null, false);
@@ -29,13 +30,17 @@ public class app {
 
 
     }
+
     public static void t(String message) {
 
         Toast.makeText(application.getContext(), message, Toast.LENGTH_LONG).show();
 
 
     }
+    public static void l(String message){
+        Log.e(main.TAG,message);
+    }
 
 
-       }
+}
 

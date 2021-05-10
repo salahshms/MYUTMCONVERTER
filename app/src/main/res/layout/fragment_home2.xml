@@ -48,7 +48,9 @@
                         android:selectAllOnFocus="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Longitude"/>
+                        android:hint="@string/enter_longitude"
+                        android:importantForAutofill="no"
+                        android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -64,7 +66,9 @@
                         android:id="@+id/latit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Latitude"/>
+                        android:hint="@string/enter_latitude"
+                        android:inputType="text"
+                        android:importantForAutofill="no" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -92,6 +96,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/degreey"/>
                         <ImageView
+                            android:contentDescription="@string/todo"
                             android:layout_weight="0.2"
                             android:src="@drawable/ic_content_copy_black_24dp"
                             android:layout_width="24dp"
@@ -119,7 +124,8 @@
                             android:src="@drawable/ic_content_copy_black_24dp"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:id="@+id/copydegreex"/>
+                            android:id="@+id/copydegreex"
+                            android:contentDescription="@string/todo" />
                     </LinearLayout>
 
 
@@ -135,19 +141,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/calculate"
-                        android:text="calculate"
+                        android:text="@string/calculate"
                         android:background="@color/blue"
                         android:textColor="@color/white"
-                        android:textStyle="bold"/>
-                    <Button
-                        android:padding="15dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/copyutm"
-                        android:text="copy result"
-                        android:background="@color/blue"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="25dp"
                         android:textStyle="bold"/>
                 </LinearLayout>
 
