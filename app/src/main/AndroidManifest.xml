@@ -24,9 +24,7 @@
             android:label="@string/title_activity_convert"
             android:windowSoftInputMode="stateHidden"/>
 
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDcdFGerAAt7XYPcrS4rVi42R4kIKZPi6w" />
+
     </application>
 
 </manifest>
