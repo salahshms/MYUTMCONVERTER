@@ -1,4 +1,3 @@
-
 package salahsh.shams;
 
 import java.util.Hashtable;
