@@ -5,16 +5,16 @@
     app:startDestination="@+id/navigation_home">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="salahsh.shams.app.ui.homeFrag"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home2" />
-
-    <fragment
         android:id="@+id/map"
         android:name="salahsh.shams.app.ui.Map"
-        android:label="@string/map"
+        android:label="@string/title_home"
         tools:layout="@layout/fragment_map" />
+    <fragment
+        android:label="تبدیل واحد"
+        android:id="@+id/navigation_home"
+        android:name="salahsh.shams.app.ui.homeFrag"
+        tools:layout="@layout/fragment_home2" />
+
 
     <fragment
         android:id="@+id/aboutus"

@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    android:gravity="center"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".app.ui.AaboutUs"
     android:background="@mipmap/threed"
+    android:gravity="center"
+    android:orientation="vertical"
     android:paddingLeft="20dp"
-    android:paddingRight="20dp">
+    android:paddingRight="20dp"
+    tools:context=".app.ui.AaboutUs">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/_2_0_1"
+        android:textColor="@color/aFCA311"
+        android:textStyle="bold" />
 
     <ImageView
-        android:outlineAmbientShadowColor="@color/white"
-        android:outlineSpotShadowColor="@color/white"
         android:id="@+id/myimg"
         android:layout_width="400dp"
         android:layout_height="400dp"
+        android:contentDescription="@string/todo"
+        android:outlineAmbientShadowColor="@color/white"
+        android:outlineSpotShadowColor="@color/white"
         android:scaleType="fitXY"
         android:src="@drawable/qqqqqqq"
-        tools:targetApi="p"
-        android:contentDescription="@string/todo" />
+        tools:targetApi="p" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/trans_blue"
         android:gravity="center"
         android:text="@string/email_salahshms_gmail_com"
         android:textColor="@color/aFCA311"
@@ -34,17 +42,18 @@
         android:typeface="serif" />
 
     <TextView
-        android:layout_marginTop="20dp"
-       android:typeface="serif"
-       android:textStyle="bold"
-       android:textSize="25sp"
-       android:textColor="@color/aE0E0E0"
-       android:id="@+id/website"
-        android:gravity="center"
+        android:id="@+id/website"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/website_salahshams_ir"
+        android:layout_marginTop="20dp"
+        android:background="@color/trans_blue"
         android:clickable="true"
-       android:focusable="true" />
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/website_salahshams_ir"
+        android:textColor="@color/aE0E0E0"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:typeface="serif" />
 
 </LinearLayout>

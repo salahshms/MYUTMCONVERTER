@@ -14,8 +14,8 @@ public class app {
         public static final String TAG = "utmconverter";
 
 
-
     }
+
     public static void Ctoast(String message) {
         TextView cutomtoasttxt;
         View view = LayoutInflater.from(application.getContext()).inflate(R.layout.cusotm_toast, null, false);
@@ -29,6 +29,7 @@ public class app {
 
 
     }
+
     public static void t(String message) {
 
         Toast.makeText(application.getContext(), message, Toast.LENGTH_LONG).show();
@@ -37,5 +38,5 @@ public class app {
     }
 
 
-       }
+}
 

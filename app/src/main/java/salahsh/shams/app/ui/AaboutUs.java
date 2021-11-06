@@ -19,26 +19,28 @@ public class AaboutUs extends Fragment {
     public AaboutUs() {
         // Required empty public constructor
     }
+
     ImageView myimg;
-    TextView email,website;
+    TextView email, website;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view=inflater.inflate(R.layout.fragment_aabout_us, container, false);
+        View view = inflater.inflate(R.layout.fragment_aabout_us, container, false);
 
-        myimg=view.findViewById(R.id.myimg);
-        email=view.findViewById(R.id.email);
-        website=view.findViewById(R.id.website);
+        myimg = view.findViewById(R.id.myimg);
+        email = view.findViewById(R.id.email);
+        website = view.findViewById(R.id.website);
 
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("message/rfc822");
-                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"salahshms@gmail.com"});
+                i.putExtra(Intent.EXTRA_EMAIL, new String[]{"salahshms@gmail.com"});
                 i.putExtra(Intent.EXTRA_SUBJECT, "در باره نرم افزار تبدیل UTM");
-                i.putExtra(Intent.EXTRA_TEXT   , "سلام من ...");
+                i.putExtra(Intent.EXTRA_TEXT, "سلام من ...");
                 try {
 
                     startActivity(Intent.createChooser(i, "Send mail..."));
@@ -57,7 +59,6 @@ public class AaboutUs extends Fragment {
                 startActivity(intent);
             }
         });
-
 
 
         return view;

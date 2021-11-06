@@ -67,7 +67,7 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
     float zoom = 18;
     TextView utm_x, utm_y, degree_x, degree_y;
     ImageView copy_utm_x, copy_utm_y, copy_degree_x, copy_degree_y, infoimage;
-    Button copyxandyutm, copyxandydegree;
+    Button copyxandyutm, copyxandydegree, copyaddress;
     Deg2UTM deg2UTM;
     public double utmx;
     public double utmy;
@@ -81,6 +81,7 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
     spref spreff;
     TextView txt_address;
     static String tmpaddress;
+    String totaladddress;
 
 
     public Map() {
@@ -100,6 +101,7 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
         degree_x = view.findViewById(R.id.degreex);
         degree_y = view.findViewById(R.id.degreey);
         copyxandydegree = view.findViewById(R.id.copydegree);
+        copyaddress = view.findViewById(R.id.copyaddress);
         copy_utm_x = view.findViewById(R.id.copyutme);
         copy_utm_y = view.findViewById(R.id.copyutmn);
         copy_degree_x = view.findViewById(R.id.copydegreex);
@@ -110,6 +112,7 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
 
 
         copyxandydegree.setOnClickListener(this);
+        copyaddress.setOnClickListener(this);
         copy_utm_x.setOnClickListener(this);
         copy_utm_y.setOnClickListener(this);
         copy_degree_x.setOnClickListener(this);
@@ -250,8 +253,8 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
 
                 if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                         ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},150);
-                }else {
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 150);
+                } else {
                     fusedLocationClient.getLastLocation().addOnSuccessListener(requireActivity(), new OnSuccessListener<Location>() {
                         @Override
                         public void onSuccess(Location location) {
@@ -274,7 +277,6 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
                 }
 
 
-
             }
 
         });
@@ -288,13 +290,13 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
 
-        if (requestCode==150){
+        if (requestCode == 150) {
 
             final Criteria criteria = new Criteria();
             try {
 
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -351,7 +353,7 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
 
 
         }
-        }
+    }
 
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -416,7 +418,7 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
                         e.printStackTrace();
 
                     }
-                    String totaladddress = display_name;
+                    totaladddress = display_name;
 
 
                     txt_address.setText(totaladddress);
@@ -477,6 +479,11 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
                 break;
             case R.id.copyutm:
                 setClipboard(getContext(), utmy + " E  - " + utmx + " N");
+                app.t("کپی شد");
+
+                break;
+            case R.id.copyaddress:
+                setClipboard(getContext(), totaladddress);
                 app.t("کپی شد");
 
                 break;

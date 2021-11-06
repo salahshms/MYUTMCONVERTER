@@ -8,7 +8,6 @@
         android:title="@string/share" />
 
     <item
-        android:checked="true"
         android:iconTint="@color/blue"
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
@@ -16,6 +15,7 @@
         tools:targetApi="o" />
 
     <item
+        android:checked="true"
         android:id="@+id/map"
         android:icon="@drawable/ic_map_black_24dp"
         android:title="@string/map" />

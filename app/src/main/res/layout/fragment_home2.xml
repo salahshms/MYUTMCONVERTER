@@ -1,154 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".app.ui.homeFrag"
-    android:padding="15dp">
+    android:padding="15dp"
+    tools:context=".app.ui.homeFrag">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
         <androidx.cardview.widget.CardView
-            app:cardCornerRadius="20dp"
-            android:layout_centerInParent="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:cardCornerRadius="20dp">
 
             <RelativeLayout
-                android:padding="15dp"
+                android:background="@color/trans_blue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <Spinner
-                    android:layout_alignParentTop="true"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:theme="@style/CardView.Dark"
                     android:id="@+id/convertionunts"
-                    android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/convertunits"/>
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="15dp"
+                    android:entries="@array/convertunits"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:theme="@style/CardView.Dark" />
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_marginTop="15dp"
+                    android:id="@+id/lon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/convertionunts"
-                    android:id="@+id/lon">
+                    android:layout_marginTop="15dp">
+
                     <EditText
-                        android:imeOptions="actionNext"
-                        android:maxLines="1"
                         android:id="@+id/longit"
-                        android:selectAllOnFocus="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Longitude"/>
+                        android:hint="@string/enter_longitude"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:selectAllOnFocus="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_below="@+id/lon"
-                    android:layout_marginTop="15dp"
+                    android:id="@+id/la"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/la">
+                    android:layout_below="@+id/lon"
+                    android:layout_marginTop="15dp">
+
                     <EditText
-                        android:imeOptions="actionNext"
-                        android:maxLines="1"
                         android:id="@+id/latit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Latitude"/>
+                        android:hint="@string/enter_latitude"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-
                 <LinearLayout
-                    android:layout_below="@+id/la"
-                    android:orientation="vertical"
                     android:id="@+id/rel"
-                    android:layout_marginTop="25dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/la"
+                    android:layout_marginTop="25dp"
+                    android:orientation="vertical">
 
                     <LinearLayout
 
-                        android:weightSum="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_weight="0.8"
-                            android:textColor="@color/blue"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/degreey"/>
-                        <ImageView
-                            android:layout_weight="0.2"
-                            android:src="@drawable/ic_content_copy_black_24dp"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:id="@+id/copydegreey"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:weightSum="1"
                         android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/degreey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.8"
+                            android:textColor="@color/blue"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/copydegreey"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_weight="0.2"
+                            android:src="@drawable/ic_content_copy_black_24dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        >
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
                         <TextView
+                            android:id="@+id/degreex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_weight="0.8"
                             android:textColor="@color/blue"
                             android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/degreex"/>
+                            android:textStyle="bold" />
+
                         <ImageView
-                            android:layout_weight="0.2"
-                            android:layout_marginTop="10dp"
-                            android:src="@drawable/ic_content_copy_black_24dp"
+                            android:id="@+id/copydegreex"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:id="@+id/copydegreex"/>
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="0.2"
+                            android:src="@drawable/ic_content_copy_black_24dp" />
                     </LinearLayout>
 
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_marginTop="25dp"
-                    android:orientation="vertical"
-                    android:layout_below="@+id/rel"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <Button
-                        android:padding="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rel"
+                    android:layout_marginTop="25dp"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/calculate"
-                        android:text="calculate"
-                        android:background="@color/blue"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"/>
-                    <Button
-                        android:padding="15dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/copyutm"
-                        android:text="copy result"
-                        android:background="@color/blue"
-                        android:textColor="@color/white"
+                        app:cardCornerRadius="10dp">
+
+                        <Button
+                            android:id="@+id/calculate"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/blue"
+                            android:text="@string/calculate"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
                         android:layout_marginTop="25dp"
-                        android:textStyle="bold"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp">
+
+                        <Button
+                            android:id="@+id/copyutm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/blue"
+                            android:padding="15dp"
+                            android:text="@string/copy_result"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
+
                 </LinearLayout>
 
             </RelativeLayout>

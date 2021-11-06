@@ -23,8 +23,6 @@ public class spref {
     private static SharedPreferences sharedPreferences;
 
 
-
-
     KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
             DEFAULT_MASTER_KEY_ALIAS,
             KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
@@ -85,9 +83,9 @@ public class spref {
         public static final String PNONE_NO = "PNONE_NO";
         public static final String REG_KEY = "REG_KEY";
 
-        static spref spreff=new spref();
-        public static final String getURLS                  = "https://k122.ir/1/sndurl.php";
-        public static final String UPLOAD_DASH_IMAGES_URL   = spreff.getStr("UPLOAD_DASH_IMAGES_URL");
+        static spref spreff = new spref();
+        public static final String getURLS = "https://k122.ir/1/sndurl.php";
+        public static final String UPLOAD_DASH_IMAGES_URL = spreff.getStr("UPLOAD_DASH_IMAGES_URL");
 
 
     }
@@ -124,14 +122,14 @@ public class spref {
     public static class omourdataTBL {
 
         public static final String id = "id";
-        public static final String nameomur             = "nameomur";
-        public static final String nameraees            = "nameraees";
-        public static final String emailomur            = "emailomur";
-        public static final String shomaretamaseomur    = "shomaretamaseomur";
-        public static final String raees_pic            = "raees_pic";
-        public static final String adess_omour          = "adess_omour";
-        public static final String latitude             = "latitude";
-        public static final String longitude            = "longitude";
+        public static final String nameomur = "nameomur";
+        public static final String nameraees = "nameraees";
+        public static final String emailomur = "emailomur";
+        public static final String shomaretamaseomur = "shomaretamaseomur";
+        public static final String raees_pic = "raees_pic";
+        public static final String adess_omour = "adess_omour";
+        public static final String latitude = "latitude";
+        public static final String longitude = "longitude";
 
 
     }

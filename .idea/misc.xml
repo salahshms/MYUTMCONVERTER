@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/activity_convert.xml" value="0.253125" />
+        <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/fragment_aabout_us.xml" value="0.253125" />
         <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/fragment_home2.xml" value="0.253125" />
         <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/fragment_map.xml" value="0.253125" />
+        <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/fragment_share.xml" value="0.253125" />
+        <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/menu/bottom_nav_menu.xml" value="0.253125" />
       </map>
     </option>
   </component>

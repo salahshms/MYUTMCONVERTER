@@ -19,20 +19,20 @@ import java.nio.channels.FileChannel;
 
 public class shareApk {
     public static void shareAPK(Activity activity) {
-            try {
-                // First we should copy apk file from source dir to ur external dir
-                ApplicationInfo app = activity.getPackageManager().getApplicationInfo(activity.getPackageName(), 0);
+        try {
+            // First we should copy apk file from source dir to ur external dir
+            ApplicationInfo app = activity.getPackageManager().getApplicationInfo(activity.getPackageName(), 0);
 
-                File apkFile = new File(app.sourceDir);
-                File backupFile = new File(Environment.getExternalStorageDirectory(), "مبدل واحد UTM.apk");
+            File apkFile = new File(app.sourceDir);
+            File backupFile = new File(Environment.getExternalStorageDirectory(), "مبدل واحد UTM.apk");
 
-                copy(apkFile, backupFile);
+            copy(apkFile, backupFile);
 
-                Intent shareIntent = getShareIntent(backupFile);
-                activity.startActivity(Intent.createChooser(shareIntent, "فرستادن فایل نصبی برنامه تبدیل واحد برای دوستان"));
-            } catch (PackageManager.NameNotFoundException | IOException e) {
-                e.printStackTrace();
-            }
+            Intent shareIntent = getShareIntent(backupFile);
+            activity.startActivity(Intent.createChooser(shareIntent, "فرستادن فایل نصبی برنامه تبدیل واحد برای دوستان"));
+        } catch (PackageManager.NameNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
