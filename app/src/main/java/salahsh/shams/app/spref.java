@@ -1,11 +1,14 @@
 package salahsh.shams.app;
 
-import android.content.Context;
+import static androidx.security.crypto.MasterKey.DEFAULT_AES_GCM_MASTER_KEY_SIZE;
+import static androidx.security.crypto.MasterKey.DEFAULT_MASTER_KEY_ALIAS;
+
 import android.content.SharedPreferences;
-import android.os.Build;
+import android.security.keystore.KeyGenParameterSpec;
+import android.security.keystore.KeyProperties;
 
 import androidx.security.crypto.EncryptedSharedPreferences;
-import androidx.security.crypto.MasterKeys;
+import androidx.security.crypto.MasterKey;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -16,46 +19,49 @@ public class spref {
         public static final String DB_NAME = "my122app.db";
     }
 
-    private SharedPreferences sh;
     private SharedPreferences.Editor editor;
     private static SharedPreferences sharedPreferences;
 
-    String masterAliasKey;
+
+
+
+    KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
+            DEFAULT_MASTER_KEY_ALIAS,
+            KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+            .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+            .setKeySize(DEFAULT_AES_GCM_MASTER_KEY_SIZE)
+            .build();
+
+    MasterKey masterKey;
 
 
     public spref() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            try {
-                masterAliasKey = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
-            } catch (GeneralSecurityException | IOException e) {
-                e.printStackTrace();
-            }
-        }
         try {
-            sh = EncryptedSharedPreferences.create(app.main.TAG, masterAliasKey, application.getContext(),
-                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV, EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM);
-            editor = sh.edit();
+            masterKey = new MasterKey.Builder(application.getContext())
+                    .setKeyGenParameterSpec(spec)
+                    .build();
+
+            sharedPreferences = EncryptedSharedPreferences.create(application.getContext(),
+                    app.main.TAG,
+                    masterKey,
+                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            );
+            editor = sharedPreferences.edit();
         } catch (GeneralSecurityException | IOException e) {
             e.printStackTrace();
         }
+
     }
 
-    public static SharedPreferences get() {
-        if (sharedPreferences != null) {
-            return sharedPreferences;
-
-        } else {
-            sharedPreferences = application.getContext().getSharedPreferences(app.main.TAG, Context.MODE_PRIVATE);
-            return sharedPreferences;
-        }
-    }
 
     public boolean save(String KeyName, String KeyValye) {
         return editor.putString(KeyName, KeyValye).commit();
     }
 
     public String getStr(String KeyName) {
-        return sh.getString(KeyName, "");
+        return sharedPreferences.getString(KeyName, "");
 
 
     }

@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
 
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import java.io.File;
@@ -18,7 +19,6 @@ import java.nio.channels.FileChannel;
 
 public class shareApk {
     public static void shareAPK(Activity activity) {
-        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             try {
                 // First we should copy apk file from source dir to ur external dir
                 ApplicationInfo app = activity.getPackageManager().getApplicationInfo(activity.getPackageName(), 0);
@@ -30,13 +30,12 @@ public class shareApk {
 
                 Intent shareIntent = getShareIntent(backupFile);
                 activity.startActivity(Intent.createChooser(shareIntent, "فرستادن فایل نصبی برنامه تبدیل واحد برای دوستان"));
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (PackageManager.NameNotFoundException | IOException e) {
                 e.printStackTrace();
             }
-        }
+
     }
+
 
     public static Intent getShareIntent(File file) {
         Intent intent = new Intent();

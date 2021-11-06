@@ -45,6 +45,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/mainMap"
@@ -52,10 +54,10 @@
         app:layout_constraintTop_toTopOf="@+id/guideline108">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/trans_blue">
+            android:background="@color/trans_blue"
+            android:padding="5dp">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline7"
@@ -114,11 +116,11 @@
                 app:layout_constraintGuide_percent="0.78" />
 
             <TextView
-                android:padding="5dp"
                 android:id="@+id/txt_address"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_alignParentTop="true"
+                android:padding="5dp"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline6"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -224,10 +226,10 @@
 
 
             <Button
-                android:layout_margin="5dp"
                 android:id="@+id/copyutm"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:background="@color/blue"
                 android:text="@string/copy_utm"
                 android:textColor="@color/white"
@@ -238,10 +240,10 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
             <Button
-                android:layout_margin="5dp"
                 android:id="@+id/copydegree"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:background="@color/blue"
                 android:text="@string/copy_degree"
                 android:textColor="@color/white"

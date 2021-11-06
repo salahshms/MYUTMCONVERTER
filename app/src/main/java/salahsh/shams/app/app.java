@@ -11,7 +11,7 @@ import salahsh.shams.R;
 public class app {
 
     public static class main {
-        public static final String TAG = "UTMCONVERTOR";
+        public static final String TAG = "utmconverter";
 
 
 
