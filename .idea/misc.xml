@@ -3,11 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/drawable/bg.xml" value="0.26927083333333335" />
+        <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/drawable/ic_baseline_person_pin_circle_24.xml" value="0.26927083333333335" />
         <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/activity_convert.xml" value="0.253125" />
+        <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/activity_splash.xml" value="0.253125" />
+        <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/askpermission_dialog.xml" value="0.253125" />
+        <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/cusotm_toast.xml" value="0.253125" />
         <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/fragment_aabout_us.xml" value="0.253125" />
         <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/fragment_home2.xml" value="0.253125" />
         <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/fragment_map.xml" value="0.253125" />
         <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/fragment_share.xml" value="0.253125" />
+        <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/layout/gpson_dialog.xml" value="0.253125" />
         <entry key="..\:/android project/MYUTMCONVERTER/app/src/main/res/menu/bottom_nav_menu.xml" value="0.253125" />
       </map>
     </option>

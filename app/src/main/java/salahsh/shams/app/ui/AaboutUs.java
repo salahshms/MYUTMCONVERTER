@@ -26,16 +26,16 @@ public class AaboutUs extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = null;
+        try {
 
-        View view = inflater.inflate(R.layout.fragment_aabout_us, container, false);
+            view = inflater.inflate(R.layout.fragment_aabout_us, container, false);
 
-        myimg = view.findViewById(R.id.myimg);
-        email = view.findViewById(R.id.email);
-        website = view.findViewById(R.id.website);
+            myimg = view.findViewById(R.id.myimg);
+            email = view.findViewById(R.id.email);
+            website = view.findViewById(R.id.website);
 
-        email.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            email.setOnClickListener(v -> {
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("message/rfc822");
                 i.putExtra(Intent.EXTRA_EMAIL, new String[]{"salahshms@gmail.com"});
@@ -47,20 +47,19 @@ public class AaboutUs extends Fragment {
                 } catch (android.content.ActivityNotFoundException ex) {
                     app.t("There are no email clients installed.");
                 }
-            }
-        });
-        website.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            });
+            website.setOnClickListener(v -> {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
                 intent.setData(Uri.parse("http://salahshams.ir"));
                 startActivity(intent);
-            }
-        });
+            });
 
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return view;
     }
 }

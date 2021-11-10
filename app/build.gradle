@@ -5,11 +5,11 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "salah.shams"
+        applicationId "salahsh.shams"
         minSdkVersion 23
         targetSdkVersion 31
-        versionCode 21
-        versionName "2.1"
+        versionCode 27
+        versionName "ماهور "
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -54,7 +55,11 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapController;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.ItemizedIconOverlay;
+import org.osmdroid.views.overlay.Overlay;
+import org.osmdroid.views.overlay.OverlayItem;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import salahsh.shams.Deg2UTM;
@@ -65,23 +70,19 @@ import salahsh.shams.app.spref;
 public class Map extends Fragment implements View.OnClickListener, LocationListener {
     double lat, lng;
     float zoom = 18;
-    TextView utm_x, utm_y, degree_x, degree_y;
+    TextView utm_x, utm_y, degree_x, degree_y, txt_address, acuracy, alretwakegps;
     ImageView copy_utm_x, copy_utm_y, copy_degree_x, copy_degree_y, infoimage;
     Button copyxandyutm, copyxandydegree, copyaddress;
     Deg2UTM deg2UTM;
-    public double utmx;
-    public double utmy;
-    public double degx;
-    public double degy;
+    public double utmx, degy, utmy, degx;
     private MapView osm;
     private MapController mc;
     private LocationManager locationManager;
     FloatingActionButton goloction;
-    String Holder;
+
     spref spreff;
-    TextView txt_address;
     static String tmpaddress;
-    String totaladddress;
+    String totaladddress, Holder;
 
 
     public Map() {
@@ -108,7 +109,11 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
         copy_degree_y = view.findViewById(R.id.copydegreey);
         copyxandyutm = view.findViewById(R.id.copyutm);
         txt_address = view.findViewById(R.id.txt_address);
+        acuracy = view.findViewById(R.id.acuracy);
+        alretwakegps = view.findViewById(R.id.alretwakegps);
         infoimage = view.findViewById(R.id.infoimage);
+        acuracy.bringToFront();
+        alretwakegps.bringToFront();
 
 
         copyxandydegree.setOnClickListener(this);
@@ -159,21 +164,13 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
             agree = perDialog.findViewById(R.id.agree);
             disagree = perDialog.findViewById(R.id.disagree);
 
-            agree.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                    requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
-                            Manifest.permission.ACCESS_FINE_LOCATION}, 150);
+            agree.setOnClickListener(v -> {
+                dialog.dismiss();
+                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION}, 150);
 
-                }
             });
-            disagree.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
+            disagree.setOnClickListener(v -> dialog.dismiss());
             Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialog.show();
         } else {
@@ -183,6 +180,7 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
                 try {
 
                     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -205,6 +203,7 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
                         addMarker(geoPoint);
                         degx = e.getSource().getMapCenter().getLatitude();
                         degy = e.getSource().getMapCenter().getLongitude();
+
                         degree_x.setText(degx + "   Lat");
                         degree_y.setText(degy + "   Long");
                         utmx = deg2UTM.Northing;
@@ -228,6 +227,7 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
 
                         GeoPoint geoPoint = new GeoPoint(event.getSource().getMapCenter().getLatitude(), event.getSource().getMapCenter().getLongitude());
                         addMarker(geoPoint);
+
                         return false;
                     }
 
@@ -245,45 +245,46 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
 
         //----------------------------------------------------------------------------------------------------
 
-        goloction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final FusedLocationProviderClient fusedLocationClient;
-                fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
-
-                if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                        ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 150);
-                } else {
-                    fusedLocationClient.getLastLocation().addOnSuccessListener(requireActivity(), new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            try {
-
-
-                                lat = location.getLatitude();
-                                lng = location.getLongitude();
-                                spreff.save("lat :", String.valueOf(lat));
-                                spreff.save("lat :", String.valueOf(lat));
-
-                                setAddrAndGotoLocation(lat, lng);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-
-                            }
-
-                        }
-                    });
-                }
-
-
-            }
+        goloction.setOnClickListener(view1 -> {
+            goloc();
 
         });
-
+        goloc();
 
     }
 
+    @SuppressLint("SetTextI18n")
+    public void goloc() {
+        final FusedLocationProviderClient fusedLocationClient;
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
+
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 150);
+        } else {
+            fusedLocationClient.getLastLocation().addOnSuccessListener(requireActivity(), location -> {
+                try {
+                    acuracy.setText(" دقت : " + location.getAccuracy() / 100);
+                    if ((location.getAccuracy() / 100) > 8) {
+                        alretwakegps.setVisibility(View.VISIBLE);
+                    } else {
+                        alretwakegps.setVisibility(View.GONE);
+                    }
+                    lat = location.getLatitude();
+                    lng = location.getLongitude();
+                    spreff.save("lat :", String.valueOf(lat));
+                    spreff.save("lat :", String.valueOf(lat));
+
+                    setAddrAndGotoLocation(lat, lng);
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+
+            });
+        }
+
+    }
 
     @SuppressLint("MissingPermission")
     @Override
@@ -359,14 +360,19 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
     @SuppressLint("UseCompatLoadingForDrawables")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void addMarker(GeoPoint center) {
-        org.osmdroid.views.overlay.Marker marker = new org.osmdroid.views.overlay.Marker(osm);
-        marker.setPosition(center);
-        marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, org.osmdroid.views.overlay.Marker.ANCHOR_BOTTOM);
-        marker.setIcon(requireContext().getDrawable(R.drawable.ic_baseline_person_pin_circle_24));
-        osm.getOverlays().clear();
-        osm.getOverlays().add(marker);
-        osm.invalidate();
-        marker.setTitle("مکان فعلی شما");
+        try {
+            org.osmdroid.views.overlay.Marker marker = new org.osmdroid.views.overlay.Marker(osm);
+            marker.setPosition(center);
+            marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, org.osmdroid.views.overlay.Marker.ANCHOR_BOTTOM);
+            marker.setIcon(requireContext().getDrawable(R.drawable.ic_baseline_person_pin_circle_24));
+            osm.getOverlays().clear();
+            osm.getOverlays().add(marker);
+            osm.invalidate();
+
+            marker.setTitle("مکان فعلی شما");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -390,48 +396,39 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
 
             String add = "https://nominatim.openstreetmap.org/reverse?format=geojson&lat=" + lat + "&lon=" + lng;
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, add, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, add, response -> {
 
-                    String state = null;
-                    String display_name = null;
+                String state = null;
+                String display_name = null;
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray ddd = jsonObject.getJSONArray("features");
+                    JSONObject subfeaturre = ddd.getJSONObject(0);
+                    JSONObject subproperties = subfeaturre.getJSONObject("properties");
+                    JSONObject ddd1 = subproperties.getJSONObject("address");
+
                     try {
-                        JSONObject jsonObject = new JSONObject(response);
-                        JSONArray ddd = jsonObject.getJSONArray("features");
-                        JSONObject subfeaturre = ddd.getJSONObject(0);
-                        JSONObject subproperties = subfeaturre.getJSONObject("properties");
-                        JSONObject ddd1 = subproperties.getJSONObject("address");
-
-                        try {
-                            state = ddd1.getString("state");
-                        } catch (Exception e) {
-                            state = "";
-                        }
-                        try {
-                            display_name = subproperties.getString("display_name");
-                        } catch (Exception e) {
-                            display_name = "";
-                        }
-
+                        state = ddd1.getString("state");
                     } catch (Exception e) {
-                        e.printStackTrace();
-
+                        state = "";
                     }
-                    totaladddress = display_name;
+                    try {
+                        display_name = subproperties.getString("display_name");
+                    } catch (Exception e) {
+                        display_name = "";
+                    }
 
-
-                    txt_address.setText(totaladddress);
-                    tmpaddress = totaladddress;
-
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
 
                 }
-            });
+                totaladddress = display_name;
+
+
+                txt_address.setText(totaladddress);
+                tmpaddress = totaladddress;
+
+            }, error -> error.printStackTrace());
             RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
             requestQueue.add(stringRequest);
 
@@ -544,6 +541,7 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
 
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onLocationChanged(Location location) {
 
@@ -562,5 +560,11 @@ public class Map extends Fragment implements View.OnClickListener, LocationListe
     @Override
     public void onProviderDisabled(String provider) {
 
+    }
+
+    @Override
+    public void onPause() {
+        locationManager.removeUpdates(this);
+        super.onPause();
     }
 }

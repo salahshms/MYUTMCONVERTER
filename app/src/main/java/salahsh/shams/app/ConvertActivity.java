@@ -29,7 +29,7 @@ public class ConvertActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.map, R.id.share, R.id.navigation_home, R.id.aboutus)
+                R.id.map, R.id.navigation_home, R.id.aboutus)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

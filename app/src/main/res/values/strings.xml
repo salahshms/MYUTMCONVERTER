@@ -1,11 +1,10 @@
 <resources>
-    <string name="app_name">MY UTM CONVERTOR</string>
+    <string name="app_name">تبدیل واحد جغرافیایی</string>
     <string name="title_activity_convert">MY UTM CONVERTOR</string>
-    <string name="title_home">خانه</string>
+    <string name="title_home">تبدیل</string>
     <string name="share">ارسال برنامه</string>
     <string name="aboutus">درباره من</string>
     <string name="map">بر اساس نقشه</string>
-    <string name="click_on_share_image_to_share_the_app_n">Click On Share Image to Share The App \n برای به اشتراک گذاری بری روی عکس کلیک کنید</string>
     <string name="todo">TODO</string>
     <string name="toast">سس</string>
 
@@ -29,7 +28,9 @@
     <string name="copy_result">copy result</string>
     <string name="enter_latitude">Enter Latitude</string>
     <string name="enter_longitude">Enter Longitude</string>
-    <string name="_2_0_1">نسخه 2.0.1 (ماهور)</string>
+    <string name="_2_0_1">نسخه 2.0.2 (ماهور)</string>
+    <string name="alert">سیگنال جی پی اس ضعیف است \n برای دقت بیشر در فضای باز قرار بگیرید</string>
+    <string name="acc">دقت</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 

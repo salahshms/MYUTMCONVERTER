@@ -1,12 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".app.ConvertActivity"
-    android:background="@mipmap/threed">
+    android:background="@mipmap/threed"
+    tools:context=".app.ConvertActivity">
+
+    <TextView
+        android:id="@+id/acuracy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/acc"
+        android:textColor="@color/aFCA311"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline108"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.96" />
+
+
+
+    <TextView
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@drawable/bg"
+        android:textSize="18sp"
+        android:id="@+id/alretwakegps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/alert"
+        android:textColor="@color/a233B6C"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/guideline108"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.060000002" />
 
     <org.osmdroid.views.MapView
         android:id="@+id/mainMap"
@@ -17,7 +51,8 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline108"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/goloction"
@@ -33,6 +68,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.98"
         app:rippleColor="@color/transp" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline108"
         android:layout_width="wrap_content"
@@ -123,15 +159,15 @@
                 app:layout_constraintGuide_percent="0.78" />
 
             <TextView
-                android:background="@color/trans_blue"
-                android:textStyle="bold"
-                android:textColor="@color/a233B6C"
                 android:id="@+id/txt_address"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_alignParentTop="true"
+                android:background="@color/trans_blue"
                 android:padding="8dp"
+                android:textColor="@color/a233B6C"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/guideline6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -233,51 +269,52 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline8"
                 app:layout_constraintTop_toTopOf="@+id/guideline110" />
-<androidx.cardview.widget.CardView
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:layout_margin="5dp"
-    app:layout_constraintBottom_toTopOf="@+id/guideline7"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="@+id/guideline10"
-    app:layout_constraintTop_toTopOf="@+id/guideline9"
-    app:cardCornerRadius="10dp">
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/copyutm"
-        android:background="@color/blue"
-        android:text="@string/copy_utm"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
-</androidx.cardview.widget.CardView>
-
-<androidx.cardview.widget.CardView
-    app:cardCornerRadius="10dp"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:layout_margin="5dp"
-    app:layout_constraintBottom_toTopOf="@+id/guideline7"
-    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/guideline9" >
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/copydegree"
-        android:background="@color/blue"
-        android:text="@string/copy_degree"
-        android:textColor="@color/white"
-        android:textStyle="bold"/>
-</androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:cardCornerRadius="10dp"
                 android:layout_margin="5dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline10"
+                app:layout_constraintTop_toTopOf="@+id/guideline9">
+
+                <Button
+                    android:id="@+id/copyutm"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue"
+                    android:text="@string/copy_utm"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline7"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline9">
+
+                <Button
+                    android:id="@+id/copydegree"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue"
+                    android:text="@string/copy_degree"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="10dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline7"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -294,5 +331,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
